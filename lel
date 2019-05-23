@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Downloading KeePassXC."
+curl -O https://github.com/keepassxreboot/keepassxc/releases/download/2.4.1/KeePassXC-2.4.1.dmg
+echo "Extracting stuff..."
+hdiutil mount KeePassXC-2.4.1.dmg
