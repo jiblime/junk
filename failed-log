@@ -1,0 +1,643 @@
+ EXTRA_CFLAGS   := -falign-functions=32 -fsched2-use-superblocks -fipa-pta -fno-semantic-interposition -fno-math-errno -fno-trapping-math -fdevirtualize-at-ltrans -fno-plt
+ EXTRA_CPPFLAGS := -falign-functions=32 -fsched2-use-superblocks -fipa-pta -fno-semantic-interposition -fno-math-errno -fno-trapping-math -fdevirtualize-at-ltrans -fno-plt
+ ld.bfd
+ GCC 9.1.0
+ ---
+ make bzImage V=3
+ ---
+ CALL    scripts/checksyscalls.sh
+  CALL    scripts/atomic/check-atomics.sh
+  DESCEND  objtool
+  CHK     include/generated/compile.h
+  CC      arch/x86/crypto/glue_helper.o
+  AS      arch/x86/crypto/aes-x86_64-asm_64.o
+  CC      arch/x86/crypto/aes_glue.o
+  AS      arch/x86/crypto/des3_ede-asm_64.o
+  CC      arch/x86/crypto/des3_ede_glue.o
+  AS      arch/x86/crypto/blowfish-x86_64-asm_64.o
+  CC      arch/x86/crypto/blowfish_glue.o
+  AS      arch/x86/crypto/twofish-x86_64-asm_64.o
+  CC      arch/x86/crypto/twofish_glue.o
+  AS      arch/x86/crypto/twofish-x86_64-asm_64-3way.o
+  CC      arch/x86/crypto/twofish_glue_3way.o
+  AS      arch/x86/crypto/chacha-ssse3-x86_64.o
+  CC      arch/x86/crypto/chacha_glue.o
+  AS      arch/x86/crypto/chacha-avx2-x86_64.o
+  AS      arch/x86/crypto/chacha-avx512vl-x86_64.o
+  AS      arch/x86/crypto/serpent-sse2-x86_64-asm_64.o
+  CC      arch/x86/crypto/serpent_sse2_glue.o
+  AS      arch/x86/crypto/aesni-intel_asm.o
+  CC      arch/x86/crypto/aesni-intel_glue.o
+  AS      arch/x86/crypto/aesni-intel_avx-x86_64.o
+  AS      arch/x86/crypto/aes_ctrby8_avx-x86_64.o
+  AS      arch/x86/crypto/ghash-clmulni-intel_asm.o
+  CC      arch/x86/crypto/ghash-clmulni-intel_glue.o
+  CC      arch/x86/crypto/crc32c-intel_glue.o
+  AS      arch/x86/crypto/crc32c-pcl-intel-asm_64.o
+  AS      arch/x86/crypto/sha1_ssse3_asm.o
+  CC      arch/x86/crypto/sha1_ssse3_glue.o
+  AS      arch/x86/crypto/sha1_avx2_x86_64_asm.o
+  AS      arch/x86/crypto/sha1_ni_asm.o
+  AS      arch/x86/crypto/crc32-pclmul_asm.o
+  CC      arch/x86/crypto/crc32-pclmul_glue.o
+  AS      arch/x86/crypto/sha256-ssse3-asm.o
+  AS      arch/x86/crypto/sha256-avx-asm.o
+  AS      arch/x86/crypto/sha256-avx2-asm.o
+  CC      arch/x86/crypto/sha256_ssse3_glue.o
+  AS      arch/x86/crypto/sha256_ni_asm.o
+  AS      arch/x86/crypto/sha512-ssse3-asm.o
+  AS      arch/x86/crypto/sha512-avx-asm.o
+  AS      arch/x86/crypto/sha512-avx2-asm.o
+  CC      arch/x86/crypto/sha512_ssse3_glue.o
+  AS      arch/x86/crypto/crct10dif-pcl-asm_64.o
+  CC      arch/x86/crypto/crct10dif-pclmul_glue.o
+  AS      arch/x86/crypto/poly1305-sse2-x86_64.o
+  CC      arch/x86/crypto/poly1305_glue.o
+  AS      arch/x86/crypto/poly1305-avx2-x86_64.o
+  AS      arch/x86/crypto/aegis128-aesni-asm.o
+  CC      arch/x86/crypto/aegis128-aesni-glue.o
+  AS      arch/x86/crypto/aegis128l-aesni-asm.o
+  CC      arch/x86/crypto/aegis128l-aesni-glue.o
+  AS      arch/x86/crypto/aegis256-aesni-asm.o
+  CC      arch/x86/crypto/aegis256-aesni-glue.o
+  CC      arch/x86/crypto/morus640_glue.o
+  CC      arch/x86/crypto/morus1280_glue.o
+  AS      arch/x86/crypto/morus640-sse2-asm.o
+  CC      arch/x86/crypto/morus640-sse2-glue.o
+  AS      arch/x86/crypto/morus1280-sse2-asm.o
+  CC      arch/x86/crypto/morus1280-sse2-glue.o
+  AS      arch/x86/crypto/nh-sse2-x86_64.o
+  CC      arch/x86/crypto/nhpoly1305-sse2-glue.o
+  AS      arch/x86/crypto/nh-avx2-x86_64.o
+  CC      arch/x86/crypto/nhpoly1305-avx2-glue.o
+  AS      arch/x86/crypto/twofish-avx-x86_64-asm_64.o
+  CC      arch/x86/crypto/twofish_avx_glue.o
+  AS      arch/x86/crypto/serpent-avx-x86_64-asm_64.o
+  CC      arch/x86/crypto/serpent_avx_glue.o
+  AS      arch/x86/crypto/serpent-avx2-asm_64.o
+  CC      arch/x86/crypto/serpent_avx2_glue.o
+  AS      arch/x86/crypto/morus1280-avx2-asm.o
+  CC      arch/x86/crypto/morus1280-avx2-glue.o
+  AR      arch/x86/crypto/built-in.a
+  CC      arch/x86/entry/vdso/vma.o
+arch/x86/entry/vdso/vma.o: warning: objtool: vvar_fault()+0x59: unsupported intra-function call
+arch/x86/entry/vdso/vma.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/entry/vdso/vdso32-setup.o
+  LDS     arch/x86/entry/vdso/vdso.lds
+  AS      arch/x86/entry/vdso/vdso-note.o
+  CC      arch/x86/entry/vdso/vclock_gettime.o
+  CC      arch/x86/entry/vdso/vgetcpu.o
+  VDSO    arch/x86/entry/vdso/vdso64.so.dbg
+  OBJCOPY arch/x86/entry/vdso/vdso64.so
+  HOSTCC  arch/x86/entry/vdso/vdso2c
+  VDSO2C  arch/x86/entry/vdso/vdso-image-64.c
+  CC      arch/x86/entry/vdso/vdso-image-64.o
+  LDS     arch/x86/entry/vdso/vdso32/vdso32.lds
+  CC      arch/x86/entry/vdso/vdso32/vclock_gettime.o
+  AS      arch/x86/entry/vdso/vdso32/note.o
+  AS      arch/x86/entry/vdso/vdso32/system_call.o
+  AS      arch/x86/entry/vdso/vdso32/sigreturn.o
+  VDSO    arch/x86/entry/vdso/vdso32.so.dbg
+  OBJCOPY arch/x86/entry/vdso/vdso32.so
+  VDSO2C  arch/x86/entry/vdso/vdso-image-32.c
+  CC      arch/x86/entry/vdso/vdso-image-32.o
+  AR      arch/x86/entry/vdso/built-in.a
+  CC      arch/x86/entry/vsyscall/vsyscall_gtod.o
+  CC      arch/x86/entry/vsyscall/vsyscall_64.o
+arch/x86/entry/vsyscall/vsyscall_64.o: warning: objtool: perf_trace_emulate_vsyscall()+0x71: unsupported intra-function call
+arch/x86/entry/vsyscall/vsyscall_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AS      arch/x86/entry/vsyscall/vsyscall_emu_64.o
+  AR      arch/x86/entry/vsyscall/built-in.a
+  AS      arch/x86/entry/entry_64.o
+  AS      arch/x86/entry/thunk_64.o
+  CC      arch/x86/entry/syscall_64.o
+  CC      arch/x86/entry/common.o
+arch/x86/entry/common.o: warning: objtool: perf_trace_sys_exit()+0x76: unsupported intra-function call
+arch/x86/entry/common.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AS      arch/x86/entry/entry_64_compat.o
+  CC      arch/x86/entry/syscall_32.o
+  AR      arch/x86/entry/built-in.a
+  CC      arch/x86/events/amd/ibs.o
+arch/x86/events/amd/ibs.o: warning: objtool: x86_pmu_amd_ibs_dying_cpu()+0x31: unsupported intra-function call
+arch/x86/events/amd/ibs.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/events/amd/built-in.a
+  CC      arch/x86/events/intel/core.o
+arch/x86/events/intel/core.o: warning: objtool: intel_put_event_constraints()+0x14a: unsupported intra-function call
+arch/x86/events/intel/core.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/bts.o
+arch/x86/events/intel/bts.o: warning: objtool: __bts_event_start()+0x2d: unsupported intra-function call
+arch/x86/events/intel/bts.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/ds.o
+arch/x86/events/intel/ds.o: warning: objtool: intel_pmu_save_and_restart_reload()+0x86: unsupported intra-function call
+arch/x86/events/intel/ds.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/knc.o
+arch/x86/events/intel/knc.o: warning: objtool: knc_pmu_handle_irq()+0x42: unsupported intra-function call
+arch/x86/events/intel/knc.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/lbr.o
+arch/x86/events/intel/lbr.o: warning: objtool: branch_type()+0x3e: unsupported intra-function call
+arch/x86/events/intel/lbr.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/p4.o
+arch/x86/events/intel/p4.o: warning: objtool: p4_pmu_schedule_events()+0x570: unsupported intra-function call
+arch/x86/events/intel/p4.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/p6.o
+  CC      arch/x86/events/intel/pt.o
+arch/x86/events/intel/pt.o: warning: objtool: intel_pt_handle_vmx()+0x54: unsupported intra-function call
+arch/x86/events/intel/pt.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/rapl.o
+arch/x86/events/intel/rapl.o: warning: objtool: rapl_cpu_offline()+0x70: unsupported intra-function call
+arch/x86/events/intel/rapl.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/uncore.o
+arch/x86/events/intel/uncore.o: warning: objtool: uncore_assign_events()+0x1ac: unsupported intra-function call
+arch/x86/events/intel/uncore.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/uncore_nhmex.o
+arch/x86/events/intel/uncore_nhmex.o: warning: objtool: nhmex_mbox_msr_enable_event()+0x14b: unsupported intra-function call
+arch/x86/events/intel/uncore_nhmex.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/uncore_snb.o
+arch/x86/events/intel/uncore_snb.o: warning: objtool: snb_uncore_imc_event_init()+0x63: unsupported intra-function call
+arch/x86/events/intel/uncore_snb.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/uncore_snbep.o
+arch/x86/events/intel/uncore_snbep.o: warning: objtool: snbep_cbox_get_constraint()+0x39: unsupported intra-function call
+arch/x86/events/intel/uncore_snbep.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/intel/cstate.o
+arch/x86/events/intel/cstate.o: warning: objtool: cstate_cpu_init()+0x30: unsupported intra-function call
+arch/x86/events/intel/cstate.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/events/intel/built-in.a
+  CC      arch/x86/events/core.o
+arch/x86/events/core.o: warning: objtool: perf_assign_events()+0x41: unsupported intra-function call
+arch/x86/events/core.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/events/msr.o
+  AR      arch/x86/events/built-in.a
+  CC      arch/x86/hyperv/hv_init.o
+arch/x86/hyperv/hv_init.o: warning: objtool: read_hv_clock_tsc()+0x86: unsupported intra-function call
+arch/x86/hyperv/hv_init.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/hyperv/mmu.o
+arch/x86/hyperv/mmu.o: warning: objtool: perf_trace_hyperv_send_ipi_mask()+0x76: unsupported intra-function call
+arch/x86/hyperv/mmu.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/hyperv/nested.o
+  CC      arch/x86/hyperv/hv_apic.o
+arch/x86/hyperv/hv_apic.o: warning: objtool: __send_ipi_mask()+0xa0: unsupported intra-function call
+arch/x86/hyperv/hv_apic.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/hyperv/hv_spinlock.o
+  AR      arch/x86/hyperv/built-in.a
+  CC      arch/x86/ia32/sys_ia32.o
+arch/x86/ia32/sys_ia32.o: warning: objtool: cp_stat64()+0x38: unsupported intra-function call
+arch/x86/ia32/sys_ia32.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/ia32/ia32_signal.o
+arch/x86/ia32/ia32_signal.o: warning: objtool: ia32_restore_sigcontext()+0x167: unsupported intra-function call
+arch/x86/ia32/ia32_signal.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/ia32/audit.o
+  AR      arch/x86/ia32/built-in.a
+  CC      arch/x86/kernel/acpi/boot.o
+arch/x86/kernel/acpi/boot.o: warning: objtool: acpi_gsi_to_irq()+0x73: unsupported intra-function call
+arch/x86/kernel/acpi/boot.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/acpi/sleep.o
+arch/x86/kernel/acpi/sleep.o: warning: objtool: x86_acpi_suspend_lowlevel()+0x13b: unsupported intra-function call
+arch/x86/kernel/acpi/sleep.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AS      arch/x86/kernel/acpi/wakeup_64.o
+  CC      arch/x86/kernel/acpi/cppc_msr.o
+arch/x86/kernel/acpi/cppc_msr.o: warning: objtool: cpc_read_ffh()+0x28: unsupported intra-function call
+arch/x86/kernel/acpi/cppc_msr.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/acpi/cstate.o
+arch/x86/kernel/acpi/cstate.o: warning: objtool: acpi_processor_ffh_cstate_probe()+0x83: unsupported intra-function call
+arch/x86/kernel/acpi/cstate.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/kernel/acpi/built-in.a
+  CC      arch/x86/kernel/apic/apic.o
+arch/x86/kernel/apic/apic.o: warning: objtool: setup_APIC_eilvt()+0x12d: unsupported intra-function call
+arch/x86/kernel/apic/apic.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/apic_common.o
+arch/x86/kernel/apic/apic_common.o: warning: objtool: default_ioapic_phys_id_map()+0x26: unsupported intra-function call
+arch/x86/kernel/apic/apic_common.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/apic_noop.o
+arch/x86/kernel/apic/apic_noop.o: warning: objtool: physid_set_mask_of_physid()+0x1f: unsupported intra-function call
+arch/x86/kernel/apic/apic_noop.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/ipi.o
+arch/x86/kernel/apic/ipi.o: warning: objtool: default_send_IPI_mask_sequence_phys()+0x5d: unsupported intra-function call
+arch/x86/kernel/apic/ipi.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/vector.o
+arch/x86/kernel/apic/vector.o: warning: objtool: apic_retrigger_irq()+0x33: unsupported intra-function call
+arch/x86/kernel/apic/vector.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/hw_nmi.o
+arch/x86/kernel/apic/hw_nmi.o: warning: objtool: nmi_cpu_backtrace_handler()+0x19: unsupported intra-function call
+arch/x86/kernel/apic/hw_nmi.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/io_apic.o
+arch/x86/kernel/apic/io_apic.o: warning: objtool: ioapic_read_entry()+0x28: unsupported intra-function call
+arch/x86/kernel/apic/io_apic.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/msi.o
+arch/x86/kernel/apic/msi.o: warning: objtool: pci_msi_prepare()+0x2f: unsupported intra-function call
+arch/x86/kernel/apic/msi.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/x2apic_phys.o
+arch/x86/kernel/apic/x2apic_phys.o: warning: objtool: x2apic_acpi_madt_oem_check()+0xa0: unsupported intra-function call
+arch/x86/kernel/apic/x2apic_phys.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/x2apic_cluster.o
+arch/x86/kernel/apic/x2apic_cluster.o: warning: objtool: x2apic_acpi_madt_oem_check()+0x75: unsupported intra-function call
+arch/x86/kernel/apic/x2apic_cluster.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/apic_flat_64.o
+arch/x86/kernel/apic/apic_flat_64.o: warning: objtool: flat_send_IPI_mask_allbutself()+0x69: unsupported intra-function call
+arch/x86/kernel/apic/apic_flat_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/apic/probe_64.o
+arch/x86/kernel/apic/probe_64.o: warning: objtool: apic_send_IPI_self()+0x18: sibling call from callable instruction with modified stack frame
+  AR      arch/x86/kernel/apic/built-in.a
+  CC      arch/x86/kernel/cpu/mce/core.o
+arch/x86/kernel/cpu/mce/core.o: warning: objtool: perf_trace_mce_record()+0x70: unsupported intra-function call
+arch/x86/kernel/cpu/mce/core.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/mce/severity.o
+arch/x86/kernel/cpu/mce/severity.o: warning: objtool: mce_severity_intel()+0x14f: unsupported intra-function call
+arch/x86/kernel/cpu/mce/severity.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/mce/genpool.o
+arch/x86/kernel/cpu/mce/genpool.o: warning: objtool: mce_gen_pool_prepare_records()+0xa8: unsupported intra-function call
+arch/x86/kernel/cpu/mce/genpool.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/mce/intel.o
+arch/x86/kernel/cpu/mce/intel.o: warning: objtool: cmci_toggle_interrupt_mode()+0x28: unsupported intra-function call
+arch/x86/kernel/cpu/mce/intel.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/mce/threshold.o
+arch/x86/kernel/cpu/mce/threshold.o: warning: objtool: smp_threshold_interrupt()+0x13: unsupported intra-function call
+arch/x86/kernel/cpu/mce/threshold.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/mce/therm_throt.o
+arch/x86/kernel/cpu/mce/therm_throt.o: warning: objtool: thermal_throttle_offline()+0x17: unsupported intra-function call
+arch/x86/kernel/cpu/mce/therm_throt.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/mce/dev-mcelog.o
+arch/x86/kernel/cpu/mce/dev-mcelog.o: warning: objtool: mce_chrdev_release()+0x19: unsupported intra-function call
+arch/x86/kernel/cpu/mce/dev-mcelog.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/kernel/cpu/mce/built-in.a
+  CC      arch/x86/kernel/cpu/microcode/core.o
+arch/x86/kernel/cpu/microcode/core.o: warning: objtool: mc_cpu_down_prep()+0x17: unsupported intra-function call
+arch/x86/kernel/cpu/microcode/core.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/microcode/intel.o
+arch/x86/kernel/cpu/microcode/intel.o: warning: objtool: save_microcode_patch()+0xe9: unsupported intra-function call
+arch/x86/kernel/cpu/microcode/intel.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/kernel/cpu/microcode/built-in.a
+  CC      arch/x86/kernel/cpu/mtrr/mtrr.o
+arch/x86/kernel/cpu/mtrr/mtrr.o: warning: objtool: mtrr_restore()+0xb4: unsupported intra-function call
+arch/x86/kernel/cpu/mtrr/mtrr.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/mtrr/if.o
+arch/x86/kernel/cpu/mtrr/if.o: warning: objtool: mtrr_seq_show()+0xa4: unsupported intra-function call
+arch/x86/kernel/cpu/mtrr/if.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/mtrr/generic.o
+arch/x86/kernel/cpu/mtrr/generic.o: warning: objtool: generic_get_free_region()+0xb3: unsupported intra-function call
+arch/x86/kernel/cpu/mtrr/generic.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/mtrr/cleanup.o
+  AR      arch/x86/kernel/cpu/mtrr/built-in.a
+  CC      arch/x86/kernel/cpu/cacheinfo.o
+arch/x86/kernel/cpu/cacheinfo.o: warning: objtool: cpuid4_cache_lookup_regs()+0x35c: unsupported intra-function call
+arch/x86/kernel/cpu/cacheinfo.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/scattered.o
+arch/x86/kernel/cpu/scattered.o: warning: objtool: init_scattered_cpuid_features()+0x126: unsupported intra-function call
+arch/x86/kernel/cpu/scattered.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/topology.o
+arch/x86/kernel/cpu/topology.o: warning: objtool: detect_extended_topology_early()+0xb4: unsupported intra-function call
+arch/x86/kernel/cpu/topology.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/common.o
+arch/x86/kernel/cpu/common.o: warning: objtool: load_fixmap_gdt()+0x26: unsupported intra-function call
+arch/x86/kernel/cpu/common.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/rdrand.o
+arch/x86/kernel/cpu/rdrand.o: warning: objtool: x86_init_rdrand()+0x6f: unsupported intra-function call
+arch/x86/kernel/cpu/rdrand.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/match.o
+  CC      arch/x86/kernel/cpu/bugs.o
+arch/x86/kernel/cpu/bugs.o: warning: objtool: arch_smt_update()+0x27: unsupported intra-function call
+arch/x86/kernel/cpu/bugs.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/aperfmperf.o
+arch/x86/kernel/cpu/aperfmperf.o: warning: objtool: aperfmperf_snapshot_khz()+0x6f: unsupported intra-function call
+arch/x86/kernel/cpu/aperfmperf.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/cpuid-deps.o
+arch/x86/kernel/cpu/cpuid-deps.o: warning: objtool: do_clear_cpu_cap()+0x18f: unsupported intra-function call
+arch/x86/kernel/cpu/cpuid-deps.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/proc.o
+arch/x86/kernel/cpu/proc.o: warning: objtool: c_next()+0x29: unsupported intra-function call
+arch/x86/kernel/cpu/proc.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  MKCAP   arch/x86/kernel/cpu/capflags.c
+  CC      arch/x86/kernel/cpu/capflags.o
+  CC      arch/x86/kernel/cpu/powerflags.o
+  CC      arch/x86/kernel/cpu/intel.o
+arch/x86/kernel/cpu/intel.o: warning: objtool: intel_detect_tlb()+0x50a: unsupported intra-function call
+arch/x86/kernel/cpu/intel.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/cpu/intel_pconfig.o
+  CC      arch/x86/kernel/cpu/perfctr-watchdog.o
+  CC      arch/x86/kernel/cpu/vmware.o
+  CC      arch/x86/kernel/cpu/hypervisor.o
+  CC      arch/x86/kernel/cpu/mshyperv.o
+arch/x86/kernel/cpu/mshyperv.o: warning: objtool: hyperv_vector_handler()+0x27: unsupported intra-function call
+arch/x86/kernel/cpu/mshyperv.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/kernel/cpu/built-in.a
+  CC      arch/x86/kernel/fpu/init.o
+arch/x86/kernel/fpu/init.o: warning: objtool: fpu__init_cpu()+0x10: sibling call from callable instruction with modified stack frame
+  CC      arch/x86/kernel/fpu/bugs.o
+  CC      arch/x86/kernel/fpu/core.o
+arch/x86/kernel/fpu/core.o: warning: objtool: perf_trace_x86_fpu()+0x71: unsupported intra-function call
+arch/x86/kernel/fpu/core.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/fpu/regset.o
+arch/x86/kernel/fpu/regset.o: warning: objtool: xfpregs_get()+0x3c: unsupported intra-function call
+arch/x86/kernel/fpu/regset.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/fpu/signal.o
+arch/x86/kernel/fpu/signal.o: warning: objtool: __fpu__restore_sig()+0x3f: unsupported intra-function call
+arch/x86/kernel/fpu/signal.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/fpu/xstate.o
+arch/x86/kernel/fpu/xstate.o: warning: objtool: get_xsave_addr()+0x81: unsupported intra-function call
+arch/x86/kernel/fpu/xstate.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/kernel/fpu/built-in.a
+  CC      arch/x86/kernel/kprobes/core.o
+arch/x86/kernel/kprobes/core.o: warning: objtool: resume_execution()+0x45: unsupported intra-function call
+arch/x86/kernel/kprobes/core.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/kprobes/opt.o
+arch/x86/kernel/kprobes/opt.o: warning: objtool: optimized_callback()+0x38: unsupported intra-function call
+arch/x86/kernel/kprobes/opt.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/kprobes/ftrace.o
+arch/x86/kernel/kprobes/ftrace.o: warning: objtool: kprobe_ftrace_handler()+0x2a: unsupported intra-function call
+arch/x86/kernel/kprobes/ftrace.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/kernel/kprobes/built-in.a
+  CC      arch/x86/kernel/process_64.o
+arch/x86/kernel/process_64.o: warning: objtool: __show_regs()+0x28: unsupported intra-function call
+arch/x86/kernel/process_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/signal.o
+arch/x86/kernel/signal.o: warning: objtool: do_signal()+0x39: unsupported intra-function call
+arch/x86/kernel/signal.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/signal_compat.o
+  CC      arch/x86/kernel/traps.o
+arch/x86/kernel/traps.o: warning: objtool: ist_enter()+0x28: unsupported intra-function call
+arch/x86/kernel/traps.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/idt.o
+arch/x86/kernel/idt.o: warning: objtool: idt_setup_from_table()+0x115: unsupported intra-function call
+arch/x86/kernel/idt.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/irq.o
+arch/x86/kernel/irq.o: warning: objtool: perf_trace_vector_free_moved()+0x7c: unsupported intra-function call
+arch/x86/kernel/irq.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/irq_64.o
+arch/x86/kernel/irq_64.o: warning: objtool: handle_irq()+0x106: unsupported intra-function call
+arch/x86/kernel/irq_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/dumpstack_64.o
+arch/x86/kernel/dumpstack_64.o: warning: objtool: get_stack_info()+0x3f: unsupported intra-function call
+arch/x86/kernel/dumpstack_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/time.o
+arch/x86/kernel/time.o: warning: objtool: profile_pc()+0x32: unsupported intra-function call
+arch/x86/kernel/time.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/ioport.o
+arch/x86/kernel/ioport.o: warning: objtool: __ia32_sys_iopl()+0x81: unsupported intra-function call
+arch/x86/kernel/ioport.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/dumpstack.o
+arch/x86/kernel/dumpstack.o: warning: objtool: oops_begin()+0x15: unsupported intra-function call
+arch/x86/kernel/dumpstack.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/nmi.o
+arch/x86/kernel/nmi.o: warning: objtool: perf_trace_nmi_handler()+0x7b: unsupported intra-function call
+arch/x86/kernel/nmi.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/ldt.o
+arch/x86/kernel/ldt.o: warning: objtool: map_ldt_struct()+0x12c: unsupported intra-function call
+arch/x86/kernel/ldt.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/setup.o
+arch/x86/kernel/setup.o: warning: objtool: dump_kernel_offset()+0x3e: unsupported intra-function call
+arch/x86/kernel/setup.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/x86_init.o
+  CC      arch/x86/kernel/i8259.o
+arch/x86/kernel/i8259.o: warning: objtool: mask_8259A_irq()+0x1c: unsupported intra-function call
+arch/x86/kernel/i8259.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/irqinit.o
+  CC      arch/x86/kernel/irq_work.o
+arch/x86/kernel/irq_work.o: warning: objtool: smp_irq_work_interrupt()+0x13: unsupported intra-function call
+arch/x86/kernel/irq_work.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/probe_roms.o
+arch/x86/kernel/probe_roms.o: warning: objtool: find_oprom()+0x89: unsupported intra-function call
+arch/x86/kernel/probe_roms.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/sys_x86_64.o
+arch/x86/kernel/sys_x86_64.o: warning: objtool: arch_get_unmapped_area()+0xd5: unsupported intra-function call
+arch/x86/kernel/sys_x86_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/espfix_64.o
+arch/x86/kernel/espfix_64.o: warning: objtool: init_espfix_ap.part.0()+0xcb: unsupported intra-function call
+arch/x86/kernel/espfix_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/ksysfs.o
+arch/x86/kernel/ksysfs.o: warning: objtool: boot_params_data_read()+0x2c: unsupported intra-function call
+arch/x86/kernel/ksysfs.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/bootflag.o
+  CC      arch/x86/kernel/e820.o
+  CC      arch/x86/kernel/pci-dma.o
+arch/x86/kernel/pci-dma.o: warning: objtool: via_no_dac.cold()+0x1b: unsupported intra-function call
+arch/x86/kernel/pci-dma.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/quirks.o
+arch/x86/kernel/quirks.o: warning: objtool: quirk_intel_irqbalance()+0x63: unsupported intra-function call
+arch/x86/kernel/quirks.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/topology.o
+arch/x86/kernel/topology.o: warning: objtool: arch_register_cpu()+0xa0: unsupported intra-function call
+arch/x86/kernel/topology.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/kdebugfs.o
+  CC      arch/x86/kernel/alternative.o
+arch/x86/kernel/alternative.o: warning: objtool: alternatives_smp_module_del()+0x1d: unsupported intra-function call
+arch/x86/kernel/alternative.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/i8253.o
+  CC      arch/x86/kernel/hw_breakpoint.o
+arch/x86/kernel/hw_breakpoint.o: warning: objtool: arch_install_hw_breakpoint()+0x16c: unsupported intra-function call
+arch/x86/kernel/hw_breakpoint.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/tsc.o
+arch/x86/kernel/tsc.o: warning: objtool: native_calibrate_cpu_early()+0xa0: unsupported intra-function call
+arch/x86/kernel/tsc.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/tsc_msr.o
+arch/x86/kernel/tsc_msr.o: warning: objtool: cpu_khz_from_msr()+0x1b: unsupported intra-function call
+arch/x86/kernel/tsc_msr.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/io_delay.o
+arch/x86/kernel/io_delay.o: warning: objtool: native_io_delay()+0x29: sibling call from callable instruction with modified stack frame
+  CC      arch/x86/kernel/rtc.o
+arch/x86/kernel/rtc.o: warning: objtool: mach_set_rtc_mmss()+0x63: unsupported intra-function call
+arch/x86/kernel/rtc.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/pci-iommu_table.o
+  CC      arch/x86/kernel/resource.o
+  AS      arch/x86/kernel/irqflags.o
+  CC      arch/x86/kernel/process.o
+arch/x86/kernel/process.o: warning: objtool: amd_e400_idle()+0x25: unsupported intra-function call
+arch/x86/kernel/process.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/ptrace.o
+arch/x86/kernel/ptrace.o: warning: objtool: genregs32_get()+0x372: unsupported intra-function call
+arch/x86/kernel/ptrace.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/tls.o
+arch/x86/kernel/tls.o: warning: objtool: __ia32_sys_get_thread_area()+0x123: unsupported intra-function call
+arch/x86/kernel/tls.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/step.o
+arch/x86/kernel/step.o: warning: objtool: convert_ip_to_linear()+0x4b: unsupported intra-function call
+arch/x86/kernel/step.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/i8237.o
+arch/x86/kernel/i8237.o: warning: objtool: i8237A_resume()+0x19: unsupported intra-function call
+arch/x86/kernel/i8237.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/stacktrace.o
+arch/x86/kernel/stacktrace.o: warning: objtool: __save_stack_trace()+0xd0: unsupported intra-function call
+arch/x86/kernel/stacktrace.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/reboot.o
+arch/x86/kernel/reboot.o: warning: objtool: vmxoff_nmi()+0xde: unsupported intra-function call
+arch/x86/kernel/reboot.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/early-quirks.o
+  CC      arch/x86/kernel/smp.o
+arch/x86/kernel/smp.o: warning: objtool: native_send_call_func_ipi()+0x9f: unsupported intra-function call
+arch/x86/kernel/smp.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/smpboot.o
+arch/x86/kernel/smpboot.o: warning: objtool: topology_phys_to_logical_pkg()+0x29: unsupported intra-function call
+arch/x86/kernel/smpboot.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/tsc_sync.o
+arch/x86/kernel/tsc_sync.o: warning: objtool: check_tsc_warp()+0x176: unsupported intra-function call
+arch/x86/kernel/tsc_sync.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/setup_percpu.o
+  CC      arch/x86/kernel/mpparse.o
+  CC      arch/x86/kernel/ftrace.o
+arch/x86/kernel/ftrace.o: warning: objtool: ftrace_modify_code_direct()+0x51: unsupported intra-function call
+arch/x86/kernel/ftrace.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AS      arch/x86/kernel/ftrace_64.o
+  CC      arch/x86/kernel/trace_clock.o
+  CC      arch/x86/kernel/module.o
+arch/x86/kernel/module.o: warning: objtool: module_alloc()+0x7d: unsupported intra-function call
+arch/x86/kernel/module.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/doublefault.o
+arch/x86/kernel/doublefault.o: warning: objtool: df_debug()+0x25: unsupported intra-function call
+arch/x86/kernel/doublefault.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/hpet.o
+arch/x86/kernel/hpet.o: warning: objtool: hpet_resume_counter()+0x12: unsupported intra-function call
+arch/x86/kernel/hpet.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/kvm.o
+arch/x86/kernel/kvm.o: warning: objtool: kvm_async_pf_task_wait()+0xab: unsupported intra-function call
+arch/x86/kernel/kvm.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/kvmclock.o
+arch/x86/kernel/kvmclock.o: warning: objtool: kvm_sched_clock_read()+0x1c: unsupported intra-function call
+arch/x86/kernel/kvmclock.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/paravirt.o
+arch/x86/kernel/paravirt.o: warning: objtool: native_read_msr()+0x3f: unsupported intra-function call
+arch/x86/kernel/paravirt.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/paravirt_patch_64.o
+  CC      arch/x86/kernel/paravirt-spinlocks.o
+  CC      arch/x86/kernel/pvclock.o
+arch/x86/kernel/pvclock.o: warning: objtool: pvclock_touch_watchdogs()+0xd: unsupported intra-function call
+arch/x86/kernel/pvclock.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/pci-swiotlb.o
+  CC      arch/x86/kernel/uprobes.o
+arch/x86/kernel/uprobes.o: warning: objtool: push_emulate_op()+0x72: unsupported intra-function call
+arch/x86/kernel/uprobes.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/sysfb.o
+  CC      arch/x86/kernel/sysfb_efi.o
+arch/x86/kernel/sysfb_efi.o: warning: objtool: efifb_setup_from_dmi()+0x34: unsupported intra-function call
+arch/x86/kernel/sysfb_efi.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/perf_regs.o
+  CC      arch/x86/kernel/tracepoint.o
+arch/x86/kernel/tracepoint.o: warning: objtool: trace_pagefault_reg()+0x3a: unsupported intra-function call
+arch/x86/kernel/tracepoint.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/itmt.o
+arch/x86/kernel/itmt.o: warning: objtool: sched_itmt_update_handler()+0x31: unsupported intra-function call
+arch/x86/kernel/itmt.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/unwind_orc.o
+arch/x86/kernel/unwind_orc.o: warning: objtool: unwind_get_return_address()+0x24: unsupported intra-function call
+arch/x86/kernel/unwind_orc.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/audit_64.o
+arch/x86/kernel/audit_64.o: warning: objtool: audit_classify_syscall()+0x55: sibling call from callable instruction with modified stack frame
+  CC      arch/x86/kernel/mmconf-fam10h_64.o
+arch/x86/kernel/mmconf-fam10h_64.o: warning: objtool: get_fam10h_pci_mmconf_base()+0x3d: unsupported intra-function call
+arch/x86/kernel/mmconf-fam10h_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/kernel/vsmp_64.o
+arch/x86/kernel/vsmp_64.o: warning: objtool: apicid_phys_pkg_id()+0x15: unsupported intra-function call
+arch/x86/kernel/vsmp_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/kernel/built-in.a
+  AS      arch/x86/kernel/head_64.o
+  CC      arch/x86/kernel/head64.o
+In file included from arch/x86/kernel/head64.c:35:
+In function ‘sanitize_boot_params’,
+    inlined from ‘copy_bootdata’ at arch/x86/kernel/head64.c:389:2:
+./arch/x86/include/asm/bootparam_utils.h:40:3: warning: ‘memset’ offset [197, 448] from the object at ‘boot_params’ is out of the bounds of referenced subobject ‘ext_ramdisk_image’ with type ‘unsigned int’ at offset 192 [-Warray-bounds]
+   40 |   memset(&boot_params->ext_ramdisk_image, 0,
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   41 |          (char *)&boot_params->efi_info -
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   42 |    (char *)&boot_params->ext_ramdisk_image);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./arch/x86/include/asm/bootparam_utils.h:43:3: warning: ‘memset’ offset [493, 497] from the object at ‘boot_params’ is out of the bounds of referenced subobject ‘kbd_status’ with type ‘unsigned char’ at offset 491 [-Warray-bounds]
+   43 |   memset(&boot_params->kbd_status, 0,
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   44 |          (char *)&boot_params->hdr -
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   45 |          (char *)&boot_params->kbd_status);
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  CC      arch/x86/kernel/ebda.o
+  CC      arch/x86/kernel/platform-quirks.o
+  LDS     arch/x86/kernel/vmlinux.lds
+  CC      arch/x86/mm/init.o
+arch/x86/mm/init.o: warning: objtool: perf_trace_tlb_flush()+0x76: unsupported intra-function call
+arch/x86/mm/init.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/init_64.o
+arch/x86/mm/init_64.o: warning: objtool: sync_global_pgds_l4()+0x81: unsupported intra-function call
+arch/x86/mm/init_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/fault.o
+arch/x86/mm/fault.o: warning: objtool: do_user_addr_fault()+0x6e: unsupported intra-function call
+arch/x86/mm/fault.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/ioremap.o
+arch/x86/mm/ioremap.o: warning: objtool: iounmap()+0x51: unsupported intra-function call
+arch/x86/mm/ioremap.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/extable.o
+arch/x86/mm/extable.o: warning: objtool: ex_handler_refcount()+0x59: unsupported intra-function call
+arch/x86/mm/extable.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/pageattr.o
+arch/x86/mm/pageattr.o: warning: objtool: alloc_pmd_page()+0x1b: unsupported intra-function call
+arch/x86/mm/pageattr.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/mmap.o
+arch/x86/mm/mmap.o: warning: objtool: arch_mmap_rnd()+0x40: unsupported intra-function call
+arch/x86/mm/mmap.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/pat.o
+arch/x86/mm/pat.o: warning: objtool: pat_pfn_immune_to_uc_mtrr()+0xab: unsupported intra-function call
+arch/x86/mm/pat.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/pgtable.o
+arch/x86/mm/pgtable.o: warning: objtool: pte_alloc_one()+0x20: unsupported intra-function call
+arch/x86/mm/pgtable.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/physaddr.o
+  CC      arch/x86/mm/setup_nx.o
+  CC      arch/x86/mm/tlb.o
+arch/x86/mm/tlb.o: warning: objtool: tlbflush_write_file()+0x73: unsupported intra-function call
+arch/x86/mm/tlb.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/cpu_entry_area.o
+arch/x86/mm/cpu_entry_area.o: warning: objtool: cea_set_pte()+0x83: sibling call from callable instruction with modified stack frame
+  CC      arch/x86/mm/pat_rbtree.o
+arch/x86/mm/pat_rbtree.o: warning: objtool: rbt_memtype_check_insert()+0x96: unsupported intra-function call
+arch/x86/mm/pat_rbtree.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/dump_pagetables.o
+arch/x86/mm/dump_pagetables.o: warning: objtool: printk_prot()+0x46: unsupported intra-function call
+arch/x86/mm/dump_pagetables.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/kaslr.o
+arch/x86/mm/kaslr.o: warning: objtool: init_trampoline()+0x68: unsupported intra-function call
+arch/x86/mm/kaslr.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/mm/pti.o
+arch/x86/mm/pti.o: warning: objtool: pti_user_pagetable_walk_p4d()+0x5c: unsupported intra-function call
+arch/x86/mm/pti.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/mm/built-in.a
+  CC      arch/x86/net/bpf_jit_comp.o
+arch/x86/net/bpf_jit_comp.o: warning: objtool: do_jit.isra.0()+0x4b: unsupported intra-function call
+arch/x86/net/bpf_jit_comp.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AR      arch/x86/net/built-in.a
+  AR      arch/x86/platform/atom/built-in.a
+  AR      arch/x86/platform/ce4100/built-in.a
+  CC      arch/x86/platform/efi/quirks.o
+arch/x86/platform/efi/quirks.o: warning: objtool: efi_query_variable_store()+0xf2: unsupported intra-function call
+arch/x86/platform/efi/quirks.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  CC      arch/x86/platform/efi/efi.o
+  CC      arch/x86/platform/efi/efi_64.o
+arch/x86/platform/efi/efi_64.o: warning: objtool: efi_sync_low_kernel_mappings()+0x5e: unsupported intra-function call
+arch/x86/platform/efi/efi_64.o: warning: objtool: If this is a retpoline, please patch it in with alternatives and annotate it with ANNOTATE_NOSPEC_ALTERNATIVE.
+  AS      arch/x86/platform/efi/efi_stub_64.o
+  AS      arch/x86/platform/efi/efi_thunk_64.o
+  AR      arch/x86/platform/efi/built-in.a
+  AR      arch/x86/platform/geode/built-in.a
+  AR      arch/x86/platform/goldfish/built-in.a
+  AR      arch/x86/platform/intel/built-in.a
+  AR      arch/x86/platform/intel-mid/built-in.a
+  AR      arch/x86/platform/intel-quark/built-in.a
+  AR      arch/x86/platform/iris/built-in.a
+  AR      arch/x86/platform/olpc/built-in.a
+  AR      arch/x86/platform/scx200/built-in.a
+  CC      arch/x86/platform/sfi/sfi.o
+  AR      arch/x86/platform/sfi/built-in.a
+  AR      arch/x86/platform/ts5500/built-in.a
+  AR      arch/x86/platform/uv/built-in.a
+  AR      arch/x86/platform/built-in.a
+  CC      arch/x86/platform/pvh/enlighten.o
+  AS      arch/x86/platform/pvh/head.o
+  AR      arch/x86/platform/pvh/built-in.a
+  CC      arch/x86/realmode/init.o
+  AS      arch/x86/realmode/rm/header.o
+  AS      arch/x86/realmode/rm/trampoline_64.o
+  AS      arch/x86/realmode/rm/stack.o
+  AS      arch/x86/realmode/rm/reboot.o
+  AS      arch/x86/realmode/rm/wakeup_asm.o
+  CC      arch/x86/realmode/rm/wakemain.o
+/tmp/cc3SerOR.s: Assembler messages:
+/tmp/cc3SerOR.s:360: Error: 4-byte relocation cannot be applied to 2-byte field
+/tmp/cc3SerOR.s:370: Error: 4-byte relocation cannot be applied to 2-byte field
+make[3]: *** [scripts/Makefile.build:276: arch/x86/realmode/rm/wakemain.o] Error 1
+make[2]: *** [arch/x86/realmode/Makefile:20: arch/x86/realmode/rm/realmode.bin] Error 2
+make[1]: *** [scripts/Makefile.build:486: arch/x86/realmode] Error 2
+make: *** [Makefile:1055: arch/x86] Error 2
