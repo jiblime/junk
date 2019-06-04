@@ -1,0 +1,76 @@
+# Removed to reduce (supposed) significant size incr>
+-fno-align-functions
+-fno-align-jumps
+-fno-align-labels
+-fno-align-loops
+-fno-prefetch-loop-arrays
+-freorder-blocks-algorithm=simple
+-fno-ipa-cp-clone
+-fno-loop-unroll-and-jam
+
+# Optimizations that both optimize and reduce size
+-fcode-hoisting
+-fcrossjumping
+-finline-small-functions
+-findirect-inlining
+-fipa-icf
+-ftree-builtin-call-dce
+-ftree-pre
+-ftree-vrp
+-fgcse-after-reload
+-fsplit-paths
+-ftree-partial-pre
+
+# Optimizations
+-fcaller-saves
+-fcse-follow-jumps
+-fcse-skip-blocks 
+-fdelete-null-pointer-checks -fisolate-erroneous-pat>
+-fdevirtualize  
+-fdevirtualize-speculatively
+-fgcse
+-fgcse-lm
+-fgcse-sm 
+-fgcse-las
+-fhoist-adjacent-loads 
+-finline-functions -fpartial-inlining
+-fipa-cp -fipa-bit-cp -fipa-vrp
+-fipa-ra
+-fipa-sra  
+-flra-remat  
+-foptimize-sibling-calls
+-foptimize-strlen
+-fpeephole2
+-freorder-blocks-and-partition
+-frerun-cse-after-loop 
+-fschedule-insns  -fschedule-insns2
+-fsched-interblock  -fsched-spec
+-fstore-merging 
+-fstrict-aliasing
+-fthread-jumps
+-ftree-switch-conversion -ftree-tail-merge
+-finline-functions
+-floop-interchange
+-fpeel-loops
+-fpredictive-commoning
+-ftree-slp-vectorize
+
+# Optimizations that are known to increase size
+-fdevirtualize-at-ltrans
+-fexpensive-optimizations
+-ftree-loop-distribute-patterns
+-ftree-loop-distribution
+-ftree-loop-vectorize
+-funswitch-loops
+-fversion-loops-for-strides
+
+# Optimizations that require -fprofile-arcs
+-freorder-functions
+
+# LTO & Graphite & O3
+-fgraphite-identity
+-floop-nest-optimize
+-ftree-loop-distribution
+-ftree-loop-distribute-patterns
+-floop-interchange
+-ftree-vectorize
