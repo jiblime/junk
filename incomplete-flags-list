@@ -25,7 +25,7 @@
 -fcaller-saves
 -fcse-follow-jumps
 -fcse-skip-blocks 
--fdelete-null-pointer-checks -fisolate-erroneous-pat>
+-fdelete-null-pointer-checks -fisolate-erroneous-paths-dereference
 -fdevirtualize  
 -fdevirtualize-speculatively
 -fgcse
