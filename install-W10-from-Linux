@@ -1,0 +1,31 @@
+Notes: It is possible to use NTFS to include a .wim file larger than 4GB but it may not always work and is incredibly slow due to the ntfs driver
+  https://github.com/slacka/WoeUSB/issues/164#issuecomment-373009066
+  https://github.com/slacka/WoeUSB/issues/32
+
+Install Windows 10 ISO from the **official site**
+Alternative options: LTSC, Enterprise
+Solution to gettinng a legal, $5 key: Ebay
+
+Install woeusb
+  Alternatively, grab a release from https://github.com/slacka/WoeUSB/releases
+    This way you won't have to install its deps
+
+Optional: Install GRUB with i386 (32bit) support. If you don't have this, WoeUSB will 'fail'. It will still work, but without
+i386 files to install, it will think something is wrong.
+
+mkfs.vfat -F32 -n WINDOWSISO /dev/the_usb
+# Note that since --device is used, /dev/the_usb is used instead of /dev/the_usb1
+woeusb --device /path/to/the/Windows.iso /dev/the_usb --workaround-bios-boot-flag
+
+Important steps:
+Mount the USB and make sure that efi/boot/bootx64.efi exists. Some motherboards will only boot from that.
+If it's named something else, rename it to bootx64.efi.
+
+Make sure grub/grub.cfg reads:
+
+ntldr /bootmgr
+boot
+
+ESSENTIAL:
+Do not set boot,esp flags on it. Otherwise there will be various failures such as 'missing' drivers,
+incorrect assumption of the boot partition, etc.
